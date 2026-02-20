@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Klinikaga Ro'yxatdan O'tish</title>
+    <style>
+        /* BODY & CONTAINER */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d7f0ff, #ffffff);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 350px;
+            background: white;
+            margin: 80px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a6ebd;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 70px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0a6ebd;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #084f8a;
+        }
+
+        /* TEPADA CHIQADIGAN BANNER */
+        #topSuccess {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #28a745, #5cd65c);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: top 0.6s ease;
+            z-index: 1000;
+        }
+
+        #topSuccess.show {
+            top: 20px;
+        }
+
+        /* ANIMATSIYA POP */
+        @keyframes pop {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #topSuccess.show {
+            animation: pop 0.6s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TEPADAGI BANNER -->
+    <div id="topSuccess">
+        ✅ Siz ro'yxatdan o'tdingiz, sizni kutib qolamiz!
+    </div>
+
+    <div class="container">
+        <h2>Klinikaga Ro'yxatdan O'tish</h2>
+
+        <form id="registerForm">
+            <label>Ism Familiya</label>
+            <input type="text" placeholder="Ismingizni kiriting" required>
+
+            <label>Telefon raqam</label>
+            <input type="tel" placeholder="+998 XX XXX XX XX" required>
+
+            <label>Tug'ilgan sana</label>
+            <input type="date" required>
+
+            <label>Shifokor tanlang</label>
+            <select required>
+                <option value="">Tanlang</option>
+                <option>Terapevt</option>
+                <option>Stomatolog</option>
+                <option>Kardiolog</option>
+                <option>Nevropatolog</option>
+                <option>Herurg</option>
+                <option>Akulist</option>
+                <option>Pedyatir</option>
+                <option>Lor</option>
+            </select>
+
+            <label>Sizni nima qiynayapti</label>
+            <textarea placeholder="Muammo yoki shikoyatingiz"></textarea>
+
+            <button type="submit">Ro'yxatdan o'tish</button>
+        </form>
+    </div>
+
+    <script>
+        // FORM SUBMIT EVENT
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // sahifa yangilanmasin
+
+            let box = document.getElementById("topSuccess");
+            box.classList.add("show"); // banner chiqadi
+
+            // 4 sekunddan keyin yashirilsin
+            setTimeout(() => {
+                box.classList.remove("show");
+            }, 4000);
+
+            // forma tozalanadi
+            this.reset();
+        });
+    </script>
+
+</body>
+
+</html>
